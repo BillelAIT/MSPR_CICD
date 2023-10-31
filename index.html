@@ -27,9 +27,54 @@
             color: #333;
         }
     </style>
-</head>
+
 <body>
     <h1>Billel</h1>
     <p>Ceci est un exemple de page HTML moderne avec de belles couleurs.</p>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page avec Fond d'Image Personnalisable</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        #image-upload {
+            display: none;
+        }
+
+        label {
+            display: block;
+            margin: 10px;
+            padding: 10px;
+            background-color: #3498db;
+            color: #fff;
+            text-align: center;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <input type="file" id="image-upload" accept="image/*">
+    <label for="image-upload">Choisir une image de fond</label>
+
+    <script>
+        const backgroundImage = document.body;
+
+        document.getElementById("image-upload").addEventListener("change", function (event) {
+            const file = event.target.files[0];
+            if (file) {
+                const imageURL = URL.createObjectURL(file);
+                backgroundImage.style.backgroundImage = `url(${imageURL})`;
+            }
+        });
+    </script>
 </body>
 </html>
